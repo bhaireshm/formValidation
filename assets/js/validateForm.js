@@ -1,20 +1,30 @@
 
 
-export default function ValidateForm (id, options) {
+export default function Validate(id, options) {
+
+    function constructor(id) {
+        this.id = id;
+    }
+
+    console.log(id)
 
     if (!id) {
         throw new Error('Form ID Not Specified');
     }
 
-    // Inputs to be validated (pass input types or input tags)
-    this.inputs = $(`#${id} input,#${id} select,#${id} textarea`);
-
-    // Inputs to be ignored (pass IDs in array)
-    this.ignoreIDs = [];
-
-    console.log(ValidateForm.inputs);
-
 }
+
+var ValidateForm = new Validate('mainForm');
+
+console.log(ValidateForm.id)
+
+// Inputs to be validated (pass input types or input tags)
+ValidateForm.inputs = $(`#${ValidateForm.id} input,#${ValidateForm.id} select,#${ValidateForm.id} textarea`);
+
+// Inputs to be ignored (pass IDs in array)
+ValidateForm.ignoreIDs = [];
+
+console.log(ValidateForm.inputs)
 
 ValidateForm.isEmpty = function (data) {
     if (typeof (data) == 'number' || typeof (data) == 'boolean') { return false; }
